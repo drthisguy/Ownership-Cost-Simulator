@@ -1,5 +1,5 @@
 package com.drthisguy;
 
-public interface Useable {
+public interface Usable {
     void function(float miles);
 }

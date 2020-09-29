@@ -1,14 +1,15 @@
 package com.drthisguy;
 
 public class Wheels extends CarPart {
-    private boolean isPremium;
-    private double tireTread = isPremium ? 30_000 : 22_500;
-    private int numberOfTireReplacements = 0;
-    public int numberOfPartReplacements = 0;
+    private final boolean isPremium;
+    private double tireTread;
+    private int numberOfReplacementTires = 0;
+
 
     public Wheels(boolean isPremium) {
         super(75_000);
         this.isPremium = isPremium;
+        tireTread = this.isPremium ? 30_000 : 22_500;
     }
 
     @Override
@@ -16,12 +17,12 @@ public class Wheels extends CarPart {
         for (int i = 0; i < miles; i++) {
             this.tireTread--;
                 if(tireTread == 0) {
-                    this.numberOfTireReplacements++;
+                    this.numberOfReplacementTires++;
                     this.tireTread = isPremium ? 30_000 : 22_500; //tire tread based on quality.
                 }
             this.setDurability(this.getDurability() - (this.isPremium ? 1 : 1.25)); //part wear based on part quality.
                 if(this.getDurability() <= 0) {
-                    numberOfPartReplacements++;
+                    setNumberOfReplacementParts(getNumberOfReplacementParts() + 1);
                     this.setDurability(75_000);
                 }
         }
@@ -36,10 +37,10 @@ public class Wheels extends CarPart {
                     " your " + (this.isPremium ? "premium " : "") + "wheels are beginning to fail.";
 
         System.out.println("Currently, your " + (this.isPremium ? "premium " : "") + "tires " + message);
-        System.out.println("You've replaced your tires "+ this.numberOfTireReplacements + " time(s).");
-        System.out.println("And you've replaced the wheels "+ this.numberOfPartReplacements + " time(s).");
+        System.out.println("You've replaced your tires "+ this.numberOfReplacementTires + " time(s).");
+        System.out.println("And you've replaced the wheels "+ this.getNumberOfReplacementParts() + " time(s).");
 
-        return (this.numberOfTireReplacements * 800) + (this.numberOfPartReplacements * 1500);
+        return (this.numberOfReplacementTires * 800) + (this.getNumberOfReplacementParts() * 1500);
     }
 
 }

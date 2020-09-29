@@ -5,7 +5,6 @@ public class FuelTank extends CarPart {
     private final float mileage;
     private double fuelLevel;
     private int numberOfRefills = 0;
-    private int numberOfPartReplacements = 0;
 
     public FuelTank(int tankSize) {
         super(120_000);
@@ -25,7 +24,7 @@ public class FuelTank extends CarPart {
                 }
             this.setDurability(this.getDurability() - 1);
                 if (this.getDurability() <= 0) {
-                    numberOfPartReplacements++;
+                    this.setNumberOfReplacementParts(this.getNumberOfReplacementParts() + 1);
                     this.setDurability(120_000);
                 }
         }
@@ -40,8 +39,8 @@ public class FuelTank extends CarPart {
 
         System.out.println("Currently, your " + this.tankSize + "-gallon tank is " + message);
         System.out.println("You've gassed up your car "+ this.numberOfRefills + " time(s).");
-        System.out.println("And you've replaced your tank "+ this.numberOfPartReplacements + " time(s).");
+        System.out.println("And you've replaced your tank "+ this.getNumberOfReplacementParts() + " time(s).");
 
-        return (this.numberOfRefills * (tankSize * 2)) + (this.numberOfPartReplacements * 1000);
+        return (numberOfRefills * (tankSize * 2)) + (getNumberOfReplacementParts() * 1000);
     }
 }
