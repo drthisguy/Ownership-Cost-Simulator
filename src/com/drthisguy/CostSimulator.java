@@ -1,6 +1,6 @@
 package com.drthisguy;
 
-public class Simulator {
+public class CostSimulator {
 
     public static void main(String[] args) {
         var car = new Car(4, 10, false);

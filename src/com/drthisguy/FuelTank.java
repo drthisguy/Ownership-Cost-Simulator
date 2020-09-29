@@ -1,10 +1,10 @@
 package com.drthisguy;
 
 public class FuelTank extends CarPart {
-    private int tankSize;
+    private final int tankSize;
     private final float mileage;
+    private final boolean gasIsPremium;
     private double fuelLevel;
-    private boolean gasIsPremium;
     private int numberOfRefills = 0;
 
     public FuelTank(int tankSize) {
@@ -12,7 +12,7 @@ public class FuelTank extends CarPart {
 
         this.tankSize = tankSize;
         this.fuelLevel = tankSize;
-        this.gasIsPremium = tankSize == 20 ? true : false;
+        this.gasIsPremium = tankSize == 20;
         this.mileage = 300 / (float)tankSize;
     }
 
