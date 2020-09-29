@@ -28,7 +28,7 @@ public class CarPart implements Usable {
         return numberOfReplacementParts;
     }
 
-    public void setNumberOfReplacementParts(int numberOfReplacementParts) {
-        this.numberOfReplacementParts = numberOfReplacementParts;
+    public void setNumberOfReplacementParts() {
+        this.numberOfReplacementParts++;
     }
 }

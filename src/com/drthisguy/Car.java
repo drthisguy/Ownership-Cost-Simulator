@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Car {
 
-    private final NumberFormat currency = NumberFormat.getCurrencyInstance();;
+    private final NumberFormat currency = NumberFormat.getCurrencyInstance();
     private List<CarPart> parts = new ArrayList<>();
 
     public Car(int numberOfCylinders, int tankSize, boolean hasPremiumWheels) {
@@ -19,15 +19,15 @@ public class Car {
     }
 
     public void run(float miles) {
-        System.out.println("Vroom Vroom!\n");
+        System.out.println("You've driven a total of " + miles + ".\n");
 
         for (CarPart part: parts) {
             part.function(miles);
         }
         int totalCost = parts.stream()
-                        .map(x -> x.status())
-                        .reduce(0, (a, b) -> a + b);
+                        .map(CarPart::status)
+                        .reduce(0, Integer::sum);
 
-        System.out.println("\nTotal cost of ownership so far: " + currency.format(totalCost));
+        System.out.println("\nYour total cost of ownership so far: " + currency.format(totalCost));
     }
 }

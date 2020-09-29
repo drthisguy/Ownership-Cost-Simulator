@@ -10,9 +10,10 @@ public class Console {
     public static int selectCar() {
 
         System.out.println("\n1 - Subcompact Hatchback");
-        System.out.println("2 - Midsized Sedan");
-        System.out.println("3 - Truck/SUV");
-        System.out.println("4 - Quit");
+        System.out.println("2 - Mid-sized Coupe");
+        System.out.println("3 - Full-sized Sedan");
+        System.out.println("4 - Truck or SUV");
+        System.out.println("5 - Quit");
         System.out.println("\n-------------------------");
         System.out.print("Choose the type of car, for which you wish to simulate ownership cost: ");
 

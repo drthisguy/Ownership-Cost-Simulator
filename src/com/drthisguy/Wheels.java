@@ -22,7 +22,7 @@ public class Wheels extends CarPart {
                 }
             this.setDurability(this.getDurability() - (this.isPremium ? 1 : 1.25)); //part wear based on part quality.
                 if(this.getDurability() <= 0) {
-                    setNumberOfReplacementParts(getNumberOfReplacementParts() + 1);
+                    this.setNumberOfReplacementParts();
                     this.setDurability(75_000);
                 }
         }
@@ -33,7 +33,7 @@ public class Wheels extends CarPart {
         boolean hasTread =this.tireTread > (tireTread/3);
         String message =  hasTread ? "are looking good" : "have low, tread";
         if (this.getDurability() < 22_500)
-            message += hasTread ?" However," : "And" +
+            message += (hasTread ?" However," : "And") +
                     " your " + (this.isPremium ? "premium " : "") + "wheels are beginning to fail.";
 
         System.out.println("Currently, your " + (this.isPremium ? "premium " : "") + "tires " + message);
