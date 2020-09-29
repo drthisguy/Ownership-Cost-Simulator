@@ -7,9 +7,8 @@ public class Engine extends CarPart {
     private int numberOfPartReplacements = 0;
 
 
-
     public Engine(int numberOfCylinders) {
-        super();
+        super(150_000);
         this.numberOfCylinders = numberOfCylinders;
     }
 
@@ -21,10 +20,10 @@ public class Engine extends CarPart {
                     this.numberOfOilChanges++;
                     this.oilQuality = 3_000;
                 }
-            this.setDurability(this.getDurability() - (oilQuality < 500 ? 0.003 : 0.002)); //sets the engine wear based on oil quality.
+            this.setDurability(this.getDurability() - (oilQuality <= 500 ? 1.5 : 1)); //sets the engine wear based on oil quality.
                 if(this.getDurability() <= 0) {
                     this.numberOfPartReplacements++;
-                    this.setDurability(3_000);
+                    this.setDurability(150_000);
                 }
         }
     }
@@ -37,9 +36,12 @@ public class Engine extends CarPart {
 
         System.out.println("this " + this.numberOfCylinders + "-cylinder engine is " + message);
     }
+
     @Override
     public int getOwnershipCost() {
-        return (numberOfOilChanges * 35) + (numberOfPartReplacements * 2500);
+        //cost of oil changes and engine replacements are higher for trucks or SUVs.
+        return (numberOfOilChanges * (this.numberOfCylinders < 8 ? 35 : 45))
+                + (numberOfPartReplacements * (this.numberOfCylinders < 8 ? 2500 : 3500));
     }
 
 }

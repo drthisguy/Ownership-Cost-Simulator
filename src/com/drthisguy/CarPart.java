@@ -2,7 +2,11 @@ package com.drthisguy;
 
 public class CarPart implements Useable {
 
-    private double durability = 3_000;
+    private double durability;
+
+    public CarPart(double durability) {
+        this.durability = durability;
+    }
 
 
     public void status() {}

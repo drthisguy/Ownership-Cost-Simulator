@@ -10,7 +10,7 @@ public class FuelTank extends CarPart {
     private int numberOfPartReplacements = 0;
 
     public FuelTank(int tankSize) {
-        super();
+        super(120_000);
         this.tankSize = tankSize;
         this.fuelLevel = tankSize;
         this.mileage = 300 / (float)tankSize;
@@ -19,15 +19,15 @@ public class FuelTank extends CarPart {
     @Override
     public void function(int miles) {
         for (int i = 0; i < miles; i++) {
-            this.fuelLevel = fuelLevel - (1 / this.mileage);
+            this.fuelLevel = fuelLevel - (1 / this.mileage); //decrease fuel based on gas mileage.
                 if (this.fuelLevel <= 0) {
                     numberOfRefills++;
                     this.fuelLevel = this.tankSize;
                 }
-            this.setDurability(this.getDurability() - (0.025));
+            this.setDurability(this.getDurability() - 1);
                 if (this.getDurability() <= 0) {
                     numberOfPartReplacements++;
-                    this.setDurability(3_000);
+                    this.setDurability(120_000);
                 }
         }
     }

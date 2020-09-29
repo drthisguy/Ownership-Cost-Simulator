@@ -7,7 +7,7 @@ public class Wheels extends CarPart {
     public int numberOfPartReplacements = 0;
 
     public Wheels(boolean isPremium) {
-        super();
+        super(75_000);
         this.isPremium = isPremium;
     }
 
@@ -17,12 +17,12 @@ public class Wheels extends CarPart {
             this.tireTread--;
                 if(tireTread == 0) {
                     this.numberOfTireReplacements++;
-                    this.tireTread = isPremium ? 30_000 : 22_500;
+                    this.tireTread = isPremium ? 30_000 : 22_500; //tire tread based on quality.
                 }
-            this.setDurability(this.getDurability() - (this.isPremium ? (0.04) : (0.006))); //part wear based on part quality.
+            this.setDurability(this.getDurability() - (this.isPremium ? 1 : 1.25)); //part wear based on part quality.
                 if(this.getDurability() <= 0) {
                     numberOfPartReplacements++;
-                    this.setDurability(3_000);
+                    this.setDurability(75_000);
                 }
         }
     }
@@ -34,6 +34,7 @@ public class Wheels extends CarPart {
             message += " Your " + (this.isPremium ? "premium " : "") + "wheels are starting to fail.";
 
         System.out.println("these " + (this.isPremium ? "premium " : "") + "tires " + message);
+        System.out.println(this.isPremium);
     }
 
     @Override
