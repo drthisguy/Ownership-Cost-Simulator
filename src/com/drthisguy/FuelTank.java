@@ -3,14 +3,13 @@ package com.drthisguy;
 public class FuelTank extends CarPart {
     private final int tankSize;
     private final float mileage;
-
-
     private double fuelLevel;
     private int numberOfRefills = 0;
     private int numberOfPartReplacements = 0;
 
     public FuelTank(int tankSize) {
         super(120_000);
+
         this.tankSize = tankSize;
         this.fuelLevel = tankSize;
         this.mileage = 300 / (float)tankSize;
