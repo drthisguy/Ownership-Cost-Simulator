@@ -8,15 +8,12 @@ public class CarPart implements Useable {
         this.durability = durability;
     }
 
-
-    public void status() {}
+    public int status() {
+        return 0;
+    }
 
     @Override
     public void function(float miles) {}
-
-    public int getOwnershipCost() {
-        return 0;
-    }
 
     public double getDurability() {
         return durability;

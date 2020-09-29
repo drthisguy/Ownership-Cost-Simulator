@@ -29,7 +29,7 @@ public class Engine extends CarPart {
     }
 
     @Override
-    public void status() {
+    public int status() {
         String message = this.getDurability() >= 30 ? "purring like a kitten." : "in need of a tuneup.";
         if (this.oilQuality < 30)
             message += this.getDurability() >= 30 ? " However," : " And" + " it needs an oil change.";
@@ -37,10 +37,6 @@ public class Engine extends CarPart {
         System.out.println("Currently, your " + this.numberOfCylinders + "-cylinder engine is " + message);
         System.out.println("You've changed the oil "+ this.numberOfOilChanges +" time(s).");
         System.out.println("And you've replaced the engine "+ this.numberOfPartReplacements +" time(s).");
-    }
-
-    @Override
-    public int getOwnershipCost() {
         //cost of oil changes and engine replacements are higher for trucks or SUVs.
         return (numberOfOilChanges * (this.numberOfCylinders < 8 ? 35 : 45))
                 + (numberOfPartReplacements * (this.numberOfCylinders < 8 ? 2500 : 3500));

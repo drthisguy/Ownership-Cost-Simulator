@@ -28,7 +28,7 @@ public class Wheels extends CarPart {
     }
 
     @Override
-    public void status() {
+    public int status() {
         String message = this.tireTread > (tireTread/3) ? "are looking good" : "have low, tread";
         if (this.getDurability() < 30)
             message += this.tireTread > (tireTread/3) ?" However," : "And" +
@@ -38,10 +38,7 @@ public class Wheels extends CarPart {
         System.out.println("You've replaced your tires "+ this.numberOfTireReplacements + " time(s).");
         System.out.println("And you've replaced the wheels "+ this.numberOfPartReplacements + " time(s).");
 
-    }
-
-    @Override
-    public int getOwnershipCost() {
         return (this.numberOfTireReplacements * 800) + (this.numberOfPartReplacements * 1500);
     }
+
 }

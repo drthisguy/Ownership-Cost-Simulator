@@ -1,5 +1,6 @@
 package com.drthisguy;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -20,18 +21,22 @@ public class Console {
     }
 
     public static float readInNumbOfYears() {
-        float years;
-        while(true) {
-            System.out.print("For how many years do you intend to own this vehicle? ");
-            years = input.nextInt();
-            if(years >= 0)
-                break;
-            System.out.print("Please enter a positive value for the number of years: ");
+        //New scanner and negative value initiator for years are used for validation.
+        Scanner input = new Scanner(System.in);
+        float years = -1;
+        try {
+            while (true) {
+                System.out.print("For how many years do you intend to own this vehicle? ");
+                years = input.nextFloat();
+                if (years > 0)
+                    break;
+                System.out.println("Please enter a positive value: ");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Must enter a numeric value: ");
+        } finally {
+            return years;
         }
-        return years;
     }
 
-    public static void printReport() {
-
-    }
 }

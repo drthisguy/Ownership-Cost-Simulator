@@ -6,6 +6,7 @@ public class Simulator {
 
         var car = new Car(4, 10, false);
 
+        float numberOfMiles;
         int carType = Console.selectCar();
         switch (carType) {
             case 1:
@@ -20,7 +21,13 @@ public class Simulator {
                 System.out.println("Have a great day.");
                 System.exit(0);
         }
-        float numberOfMiles = Console.readInNumbOfYears() * 15_000; //estimated miles driven per year
+
+        do{
+            //estimated miles driven per year
+            numberOfMiles = Console.readInNumbOfYears() * 15_000;
+        } while (numberOfMiles == -15_000);
+
+        System.out.println(numberOfMiles);
         car.run(numberOfMiles);
     }
 }

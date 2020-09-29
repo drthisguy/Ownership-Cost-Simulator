@@ -32,7 +32,7 @@ public class FuelTank extends CarPart {
     }
 
     @Override
-    public void status() {
+    public int status() {
         boolean gassedUp = this.fuelLevel > (this.tankSize/4.0);
         String message = gassedUp ? "good to go." : "running low.";
         if (this.getDurability() < 30)
@@ -41,10 +41,7 @@ public class FuelTank extends CarPart {
         System.out.println("Currently, your " + this.tankSize + "-gallon tank is " + message);
         System.out.println("You've gassed up your car "+ this.numberOfRefills + " time(s).");
         System.out.println("And you've replaced your tank "+ this.numberOfPartReplacements + " time(s).");
-    }
 
-    @Override
-    public int getOwnershipCost() {
         return (this.numberOfRefills * (tankSize * 2)) + (this.numberOfPartReplacements * 1000);
     }
 }
