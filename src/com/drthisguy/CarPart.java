@@ -12,7 +12,7 @@ public class CarPart implements Useable {
     public void status() {}
 
     @Override
-    public void function(int miles) {}
+    public void function(float miles) {}
 
     public int getOwnershipCost() {
         return 0;

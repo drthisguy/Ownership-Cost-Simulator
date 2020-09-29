@@ -16,7 +16,7 @@ public class FuelTank extends CarPart {
     }
 
     @Override
-    public void function(int miles) {
+    public void function(float miles) {
         for (int i = 0; i < miles; i++) {
             this.fuelLevel = fuelLevel - (1 / this.mileage); //decrease fuel based on gas mileage.
                 if (this.fuelLevel <= 0) {
@@ -33,11 +33,14 @@ public class FuelTank extends CarPart {
 
     @Override
     public void status() {
-        String message = this.fuelLevel > (this.tankSize/4.0) ? "good to go." : "running low.";
+        boolean gassedUp = this.fuelLevel > (this.tankSize/4.0);
+        String message = gassedUp ? "good to go." : "running low.";
         if (this.getDurability() < 30)
-            message += " And your fuel tank is starting to fail.";
+            message += gassedUp ? " However," : " And" + " your fuel tank is starting to fail.";
 
-        System.out.println("this " + this.tankSize + "-gallon tank is " + message);
+        System.out.println("Currently, your " + this.tankSize + "-gallon tank is " + message);
+        System.out.println("You've gassed up your car "+ this.numberOfRefills + " time(s).");
+        System.out.println("And you've replaced your tank "+ this.numberOfPartReplacements + " time(s).");
     }
 
     @Override

@@ -19,15 +19,19 @@ public class Console {
         return selection;
     }
 
-    public static int readInNumbOfMiles () {
-        int miles;
+    public static float readInNumbOfYears() {
+        float years;
         while(true) {
-            System.out.print("For how many miles do you intend to own this vehicle? ");
-            miles = input.nextInt();
-            if(miles >= 0 &&  miles % 1 == 0)
+            System.out.print("For how many years do you intend to own this vehicle? ");
+            years = input.nextInt();
+            if(years >= 0)
                 break;
-            System.out.print("Please enter a positive integer for the number of miles: ");
+            System.out.print("Please enter a positive value for the number of years: ");
         }
-        return miles;
+        return years;
+    }
+
+    public static void printReport() {
+
     }
 }

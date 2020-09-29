@@ -12,7 +12,7 @@ public class Wheels extends CarPart {
     }
 
     @Override
-    public void function(int miles) {
+    public void function(float miles) {
         for (int i = 0; i < miles; i++) {
             this.tireTread--;
                 if(tireTread == 0) {
@@ -29,12 +29,15 @@ public class Wheels extends CarPart {
 
     @Override
     public void status() {
-        String message = this.tireTread > (tireTread/3) ? "are looking good" : "have low, tire tread";
+        String message = this.tireTread > (tireTread/3) ? "are looking good" : "have low, tread";
         if (this.getDurability() < 30)
-            message += " Your " + (this.isPremium ? "premium " : "") + "wheels are starting to fail.";
+            message += this.tireTread > (tireTread/3) ?" However," : "And" +
+                    " your " + (this.isPremium ? "premium " : "") + "wheels are beginning to fail.";
 
-        System.out.println("these " + (this.isPremium ? "premium " : "") + "tires " + message);
-        System.out.println(this.isPremium);
+        System.out.println("Currently, your " + (this.isPremium ? "premium " : "") + "tires " + message);
+        System.out.println("You've replaced your tires "+ this.numberOfTireReplacements + " time(s).");
+        System.out.println("And you've replaced the wheels "+ this.numberOfPartReplacements + " time(s).");
+
     }
 
     @Override

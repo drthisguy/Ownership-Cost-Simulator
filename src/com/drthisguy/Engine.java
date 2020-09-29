@@ -13,7 +13,7 @@ public class Engine extends CarPart {
     }
 
     @Override
-    public void function(int miles) {
+    public void function(float miles) {
         for (int i = 0; i < miles; i++) {
             this.oilQuality--;
                 if(this.oilQuality == 0) {
@@ -30,11 +30,13 @@ public class Engine extends CarPart {
 
     @Override
     public void status() {
-        String message = this.getDurability() >= 50 ? "purring like a kitten." : "in need of a tuneup.";
+        String message = this.getDurability() >= 30 ? "purring like a kitten." : "in need of a tuneup.";
         if (this.oilQuality < 30)
-            message += " And it needs an oil change.";
+            message += this.getDurability() >= 30 ? " However," : " And" + " it needs an oil change.";
 
-        System.out.println("this " + this.numberOfCylinders + "-cylinder engine is " + message);
+        System.out.println("Currently, your " + this.numberOfCylinders + "-cylinder engine is " + message);
+        System.out.println("You've changed the oil "+ this.numberOfOilChanges +" time(s).");
+        System.out.println("And you've replaced the engine "+ this.numberOfPartReplacements +" time(s).");
     }
 
     @Override

@@ -20,7 +20,7 @@ public class Simulator {
                 System.out.println("Have a great day.");
                 System.exit(0);
         }
-        int numberOfMiles = Console.readInNumbOfMiles();
+        float numberOfMiles = Console.readInNumbOfYears() * 15_000; //estimated miles driven per year
         car.run(numberOfMiles);
     }
 }
