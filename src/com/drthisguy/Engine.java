@@ -30,9 +30,10 @@ public class Engine extends CarPart {
 
     @Override
     public int status() {
-        String message = this.getDurability() >= 30 ? "purring like a kitten." : "in need of a tuneup.";
-        if (this.oilQuality < 30)
-            message += this.getDurability() >= 30 ? " However," : " And" + " it needs an oil change.";
+        boolean isTuned = this.getDurability() > 45_000;
+        String message = isTuned ? "purring like a kitten." : "in need of a tuneup.";
+        if (this.oilQuality < 500)
+            message += isTuned ? " However," : " And" + " it needs an oil change.";
 
         System.out.println("Currently, your " + this.numberOfCylinders + "-cylinder engine is " + message);
         System.out.println("You've changed the oil "+ this.numberOfOilChanges +" time(s).");

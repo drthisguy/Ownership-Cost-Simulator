@@ -29,9 +29,10 @@ public class Wheels extends CarPart {
 
     @Override
     public int status() {
-        String message = this.tireTread > (tireTread/3) ? "are looking good" : "have low, tread";
-        if (this.getDurability() < 30)
-            message += this.tireTread > (tireTread/3) ?" However," : "And" +
+        boolean hasTread =this.tireTread > (tireTread/3);
+        String message =  hasTread ? "are looking good" : "have low, tread";
+        if (this.getDurability() < 22_500)
+            message += hasTread ?" However," : "And" +
                     " your " + (this.isPremium ? "premium " : "") + "wheels are beginning to fail.";
 
         System.out.println("Currently, your " + (this.isPremium ? "premium " : "") + "tires " + message);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Console {
 
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static int selectCar() {
 
@@ -16,13 +16,12 @@ public class Console {
         System.out.println("\n-------------------------");
         System.out.print("Choose the type of car, for which you wish to simulate ownership cost: ");
 
-        int selection = input.nextInt();
-        return selection;
+        return input.nextInt();
     }
 
     public static float readInNumbOfYears() {
         //New scanner and negative value initiator for years are used for validation.
-        Scanner input = new Scanner(System.in);
+        var input = new Scanner(System.in);
         float years = -1;
         try {
             while (true) {
@@ -35,6 +34,7 @@ public class Console {
         } catch (InputMismatchException e) {
             System.out.println("Must enter a numeric value: ");
         } finally {
+            //noinspection ReturnInsideFinallyBlock
             return years;
         }
     }
