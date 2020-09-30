@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Console {
 
-    private static final Scanner input = new Scanner(System.in);
-
     public static int selectCar() {
+        var input = new Scanner(System.in);
+        int selection = -1;
 
         System.out.println("\n1 - Subcompact Hatchback");
         System.out.println("2 - Mid-sized Coupe");
@@ -15,9 +15,21 @@ public class Console {
         System.out.println("4 - Truck or SUV");
         System.out.println("5 - Quit");
         System.out.println("\n-------------------------");
-        System.out.print("Choose the type of car, for which you wish to simulate ownership cost: ");
 
-        return input.nextInt();
+        try {
+            while(true) {
+                System.out.print("Choose the type of car, for which you wish to simulate ownership cost: ");
+                selection = input.nextInt();
+                if (selection <= 5 && selection > 0) {
+                    break;
+                }
+                System.out.println("Please select a valid menu item from 1 to 5.");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("You must select an integer value between 1 and 5.");
+        } finally {
+            return selection;
+        }
     }
 
     public static float readInNumbOfYears() {

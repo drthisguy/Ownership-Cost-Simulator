@@ -19,7 +19,7 @@ public class Car {
     }
 
     public void run(float miles) {
-        System.out.println("You've driven a total of " + miles + ".\n");
+        System.out.println("\nYou've driven a total of " + miles + "miles.\n");
 
         for (CarPart part: parts) {
             part.function(miles);
