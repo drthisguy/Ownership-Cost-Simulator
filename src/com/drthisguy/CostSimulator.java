@@ -10,10 +10,6 @@ public class CostSimulator {
         do{
             carType = Console.selectCar();
         } while (carType == -1);
-        do {
-            //Estimated miles driven per year
-            numberOfMiles = Console.readInNumbOfYears() * 15_000;
-        } while (numberOfMiles == -15_000);
 
         switch (carType) {
             case 1:
@@ -31,6 +27,11 @@ public class CostSimulator {
                 System.out.println("Have a great day.");
                 System.exit(0);
         }
+        do {
+            //Estimated miles driven per year
+            numberOfMiles = Console.readInNumbOfYears() * 15_000;
+        } while (numberOfMiles == -15_000);
+
         car.run(numberOfMiles);
     }
 
